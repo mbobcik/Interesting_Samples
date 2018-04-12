@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImagePrewittMagnitude", "ImagePrewittMagnitude\ImagePrewittMagnitude.csproj", "{AB0FC003-4237-4020-BC26-62C027CADFAB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AB0FC003-4237-4020-BC26-62C027CADFAB}.Debug|x86.ActiveCfg = Debug|x86
+		{AB0FC003-4237-4020-BC26-62C027CADFAB}.Debug|x86.Build.0 = Debug|x86
+		{AB0FC003-4237-4020-BC26-62C027CADFAB}.Release|x86.ActiveCfg = Release|x86
+		{AB0FC003-4237-4020-BC26-62C027CADFAB}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = ImagePrewittMagnitude\ImagePrewittMagnitude.csproj
+	EndGlobalSection
+EndGlobal

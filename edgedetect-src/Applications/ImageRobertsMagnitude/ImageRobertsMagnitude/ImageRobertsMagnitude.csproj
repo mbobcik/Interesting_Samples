@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AC160EBB-5921-4126-AE84-0FDFA47ACD25}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ImageRobertsMagnitude</RootNamespace>
+    <AssemblyName>ImageRobertsMagnitude</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Externalconsole>true</Externalconsole>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Externalconsole>true</Externalconsole>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="..\..\..\Costella\Array.Parallel.cs">
+      <Link>Costella\Array.Parallel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Costella\Bitmap.cs">
+      <Link>Costella\Bitmap.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Costella\Double4.cs">
+      <Link>Costella\Double4.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Costella\Int2.cs">
+      <Link>Costella\Int2.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Costella\Magic.cs">
+      <Link>Costella\Magic.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Costella\Pixmap.Bitmap.cs">
+      <Link>Costella\Pixmap.Bitmap.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Costella\Pixmap.Jpeg.cs">
+      <Link>Costella\Pixmap.Jpeg.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Costella\Pixmap.Magic.cs">
+      <Link>Costella\Pixmap.Magic.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Costella\Pixmap.Polar.cs">
+      <Link>Costella\Pixmap.Polar.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Costella\Pixmap.Roberts.cs">
+      <Link>Costella\Pixmap.Roberts.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Costella\Pixmap.cs">
+      <Link>Costella\Pixmap.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
