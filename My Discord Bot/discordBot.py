@@ -4,8 +4,10 @@ from discord.ext import commands
 import asyncio
 from pprint import pprint
 import time
+import json
 
 print("Starting BoboBot...")
+ConfigData = json.load(open('botData.json'))
 Loop = asyncio.get_event_loop()
 DiscordClient = discord.Client()
 CommandBot = commands.Bot(command_prefix = "!")
@@ -81,4 +83,4 @@ def countUsers():
             count+=1
     return count;
 
-CommandBot.run("")
+CommandBot.run(ConfigData["secret"])
