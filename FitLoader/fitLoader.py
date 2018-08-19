@@ -47,8 +47,8 @@ def downloadWithProgress(url, path):
 browser.open('https://cas.fit.vutbr.cz')
 
 form = browser.get_form(id='rightUIcol')
-form['login'].value = config.login
-form['password'].value = config.password
+form['login'].value = config["login"]
+form['password'].value =  config["password"]
 browser.submit_form(form)
 
 #open video server
