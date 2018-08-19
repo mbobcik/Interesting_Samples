@@ -1,8 +1,0 @@
-E:\Desktop 16 june\pen\Captcha\Backup\Captcha\bin\Debug\Captcha.exe
-E:\Desktop 16 june\pen\Captcha\Backup\Captcha\bin\Debug\Captcha.pdb
-E:\Desktop 16 june\pen\Captcha\Backup\Captcha\obj\Debug\Captcha.Form1.resources
-E:\Desktop 16 june\pen\Captcha\Backup\Captcha\obj\Debug\Captcha.Properties.Resources.resources
-E:\Desktop 16 june\pen\Captcha\Backup\Captcha\obj\Debug\Captcha.csproj.GenerateResource.Cache
-E:\Desktop 16 june\pen\Captcha\Backup\Captcha\obj\Debug\Captcha.exe
-E:\Desktop 16 june\pen\Captcha\Backup\Captcha\obj\Debug\Captcha.pdb
-E:\Desktop 16 june\pen\Captcha\Backup\Captcha\obj\Debug\Captcha.csprojResolveAssemblyReference.cache
