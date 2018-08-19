@@ -110,10 +110,10 @@ for link in links:
 	#browser.follow_link(SubjectLink)# get back to page with lectures
 
 print("Lectures found: {}".format(len(fileLinksList)))
-if not os.path.isdir("{}\\{}".format(sys.argv[1],SubjectName)):
-	os.makedirs("{}\\{}".format(sys.argv[1],SubjectName))
+if not os.path.isdir("{}\\{}".format(config["path"],SubjectName)):
+	os.makedirs("{}\\{}".format(config["path"],SubjectName))
 
 for link in fileLinksList:
-	print('{}\\{}\\{}.mp4'.format(sys.argv[1],SubjectName, link[0]))
+	print('{}\\{}\\{}.mp4'.format(config["path"],SubjectName, link[0]))
 	#stáhnout
-	downloadWithProgress(link[1],'{}\\{}\\{}.mp4'.format(sys.argv[1],SubjectName, link[0]))
+	downloadWithProgress(link[1],'{}\\{}\\{}.mp4'.format(config["path"],SubjectName, link[0]))
