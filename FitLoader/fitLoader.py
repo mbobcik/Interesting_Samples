@@ -27,7 +27,7 @@ session.verify = False
 browser = RoboBrowser(session = session)
 
 def sanitizeFileName(path):
-	return path.replace('ø','ř').replace('¹','š').replace("\r\n"," ").replace(' ','_').replace('.','').replace(',' , '') 
+	return path.replace('ø','ř').replace('¹','š').replace("\r\n"," ").replace(' ','_').replace('.','').replace(',' , '').replace('¾','ž').replace('è','č').replace('ì','ě')
 	pass
 
 def downloadWithProgress(url, path):
@@ -39,6 +39,23 @@ def downloadWithProgress(url, path):
 	            f.write(chunk)
 	            f.flush()
 
+def stopWatch(value):
+    '''From seconds to Days;Hours:Minutes;Seconds'''
+
+    valueD = (((value/365)/24)/60)
+    Days = int (valueD)
+
+    valueH = (valueD-Days)*365
+    Hours = int(valueH)
+
+    valueM = (valueH - Hours)*24
+    Minutes = int(valueM)
+
+    valueS = (valueM - Minutes)*60
+    Seconds = int(valueS)
+
+
+    print("Total duration (d;h:m;s): ",Days,";",Hours,":",Minutes,";",Seconds)
 
 
 #procompiledRegex = re.compile(regex, re.MULTILINE | re.DOTALL)
@@ -113,7 +130,12 @@ print("Lectures found: {}".format(len(fileLinksList)))
 if not os.path.isdir("{}\\{}".format(config["path"],SubjectName)):
 	os.makedirs("{}\\{}".format(config["path"],SubjectName))
 
+start = time.time()
+
 for link in fileLinksList:
 	print('{}\\{}\\{}.mp4'.format(config["path"],SubjectName, link[0]))
 	#stáhnout
 	downloadWithProgress(link[1],'{}\\{}\\{}.mp4'.format(config["path"],SubjectName, link[0]))
+
+end = time.time()
+stopWatch(end-start)
