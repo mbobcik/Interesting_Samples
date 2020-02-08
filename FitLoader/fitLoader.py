@@ -130,12 +130,11 @@ print("Lectures found: {}".format(len(fileLinksList)))
 if not os.path.isdir("{}\\{}".format(config["path"],SubjectName)):
 	os.makedirs("{}\\{}".format(config["path"],SubjectName))
 
-start = time.time()
 
+i = 0
 for link in fileLinksList:
-	print('{}\\{}\\{}.mp4'.format(config["path"],SubjectName, link[0]))
+	i += 1
+	print('{} {}\\{}\\{}.mp4'.format(i,config["path"],SubjectName, link[0]))
 	#stáhnout
-	downloadWithProgress(link[1],'{}\\{}\\{}.mp4'.format(config["path"],SubjectName, link[0]))
+	downloadWithProgress(link[1],'{}\\{}\\{}_{}.mp4'.format(config["path"],SubjectName,i, link[0]))
 
-end = time.time()
-stopWatch(end-start)
