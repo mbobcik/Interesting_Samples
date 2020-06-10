@@ -1,1 +1,3 @@
-Interesting_Samples
+FitLoader
+
+Before starting, please fill config file attached.

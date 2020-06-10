@@ -1,8 +1,0 @@
-C:\Users\Pate\Documents\Visual Studio 2008\Projects\Dijkstra\Dijkstra\bin\Debug\Dijkstra.exe
-C:\Users\Pate\Documents\Visual Studio 2008\Projects\Dijkstra\Dijkstra\bin\Debug\Dijkstra.pdb
-C:\Users\Pate\Documents\Visual Studio 2008\Projects\Dijkstra\Dijkstra\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\Pate\Documents\Visual Studio 2008\Projects\Dijkstra\Dijkstra\obj\Debug\Dijkstra.MainForm.resources
-C:\Users\Pate\Documents\Visual Studio 2008\Projects\Dijkstra\Dijkstra\obj\Debug\Dijkstra.Properties.Resources.resources
-C:\Users\Pate\Documents\Visual Studio 2008\Projects\Dijkstra\Dijkstra\obj\Debug\Dijkstra.csproj.GenerateResource.Cache
-C:\Users\Pate\Documents\Visual Studio 2008\Projects\Dijkstra\Dijkstra\obj\Debug\Dijkstra.exe
-C:\Users\Pate\Documents\Visual Studio 2008\Projects\Dijkstra\Dijkstra\obj\Debug\Dijkstra.pdb
