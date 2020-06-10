@@ -18,8 +18,9 @@ from clint.textui import progress
 import warnings
 warnings.filterwarnings("ignore")
 
-regex = r"(?<=<\/h3>\s).*(?=<br\/?><br\/?>\s?<a)"
-config = json.load(open('fitLoader.config.json'))
+regex = r"(?<=<\/h3>\s).*(?=<br\/?><br\/?>\s)"
+__location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
+config = json.load(open(os.path.join(__location__,'fitLoader.config.json')))
 
 # create new session disabling certificate checking
 session = Session()
@@ -29,8 +30,6 @@ browser = RoboBrowser(session=session)
 
 def sanitizeFileName(path):
     return path.replace('ø', 'ř').replace('¹', 'š').replace("\r\n", " ").replace(' ', '_').replace('.', '').replace(',', '').replace('¾', 'ž').replace('è', 'č').replace('ì', 'ě')
-    pass
-
 
 def downloadWithProgress(url, path):
     r = browser.session.get(url, stream=True, verify=False)
@@ -47,7 +46,7 @@ def downloadWithProgress(url, path):
 # log in to FIT
 browser.open('https://cas.fit.vutbr.cz')
 
-form = browser.get_form(id='rightUIcol')
+form = browser.get_form(action='/cosign.cgi')
 form['login'].value = config["login"]
 form['password'].value = config["password"]
 browser.submit_form(form)
@@ -96,15 +95,16 @@ print(SubjectName)
 links = browser.get_links(class_='link')
 del links[:3]
 # pprint(links)
-# print("\n")
+# print("\n")    
+
 i = 0
 fileLinksList = []
 for link in links:
     # print("{} - {}".format(i, link.text))
     i += 1
     browser.follow_link(link)
+    matches = re.search(regex, str(browser.parsed), re.MULTILINE )
 
-    matches = re.search(regex, str(browser.parsed), re.MULTILINE | re.DOTALL)
     # print(matches.group())
     fileLinksList.append((sanitizeFileName(matches.group()), browser.get_link(class_="button").attrs['href']))
     # browser.follow_link(SubjectLink)# get back to page with lectures
@@ -115,18 +115,19 @@ for link in fileLinksList:
     i += 1
     print('\t{} {}'.format(i, link[0]))
 
-skipFirstNLectures = int(input("Skip first n lectures ( 0 to download all ): "))
-skipLastNLectures = int(input("Skip last n lectures ( 0 to download all ): "))
-
-if skipFirstNLectures >= len(fileLinksList) - skipLastNLectures:
-    print("No Lectures to download. skipFirstNLectures >= skipLastNLectures")
-    exit()
-
-del fileLinksList[:skipFirstNLectures]
-del fileLinksList[-skipLastNLectures:]
-
-print("Lectures designed to be downloaded:")
-i = skipFirstNLectures
+#skipFirstNLectures = int(input("Skip first n lectures ( 0 to download all ): "))
+#skipLastNLectures = int(input("Skip last n lectures ( 0 to download all ): "))
+#
+#if skipFirstNLectures >= len(fileLinksList) - skipLastNLectures:
+#    print("No Lectures to download. skipFirstNLectures >= skipLastNLectures")
+#    exit()
+#
+#del fileLinksList[:skipFirstNLectures]
+#del fileLinksList[-skipLastNLectures:]
+#
+#print("Lectures designed to be downloaded:")
+#i = skipFirstNLectures
+i=0
 for link in fileLinksList:
     i += 1
     print('\t{} {}'.format(i, link[0]))
@@ -134,7 +135,8 @@ for link in fileLinksList:
 if not os.path.isdir("{}\\{}".format(config["path"], SubjectName)):
     os.makedirs("{}\\{}".format(config["path"], SubjectName))
 
-i = skipFirstNLectures
+#i = skipFirstNLectures
+i=0
 for link in fileLinksList:
     i += 1
     print('{} {}\\{}\\{}.mp4'.format(i, config["path"], SubjectName, link[0]))
