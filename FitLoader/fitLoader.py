@@ -2,6 +2,7 @@ from pprint import pprint
 import time
 import re
 import os
+import platform
 import sys
 import json
 from requests import Session
@@ -21,12 +22,13 @@ warnings.filterwarnings("ignore")
 regex = r"(?<=<\/h3>\s).*(?=<br\/?><br\/?>\s)"
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 config = json.load(open(os.path.join(__location__,'fitLoader.config.json')))
+systemAwareFolderDelimiter = '\\' if platform.system() == 'Windows' else '/'
+soafd = systemAwareFolderDelimiter
 
 # create new session disabling certificate checking
 session = Session()
 session.verify = False
 browser = RoboBrowser(session=session)
-
 
 def sanitizeFileName(path):
     return path.replace('ø', 'ř').replace('¹', 'š').replace("\r\n", " ").replace(' ', '_').replace('.', '').replace(',', '').replace('¾', 'ž').replace('è', 'č').replace('ì', 'ě')
@@ -41,7 +43,6 @@ def downloadWithProgress(url, path):
                 f.flush()
 
 #procompiledRegex = re.compile(regex, re.MULTILINE | re.DOTALL)
-
 
 # log in to FIT
 browser.open('https://cas.fit.vutbr.cz')
@@ -128,17 +129,17 @@ for link in fileLinksList:
 #print("Lectures designed to be downloaded:")
 #i = skipFirstNLectures
 i=0
-for link in fileLinksList:
-    i += 1
-    print('\t{} {}'.format(i, link[0]))
+#for link in fileLinksList:
+#    i += 1
+#    print('\t{} {}'.format(i, link[0]))
 
-if not os.path.isdir("{}\\{}".format(config["path"], SubjectName)):
-    os.makedirs("{}\\{}".format(config["path"], SubjectName))
+if not os.path.isdir("{}{}{}".format(config["path"], soafd, SubjectName)):
+    os.makedirs("{}{}{}".format(config["path"], soafd, SubjectName))
 
 #i = skipFirstNLectures
 i=0
 for link in fileLinksList:
     i += 1
-    print('{} {}\\{}\\{}.mp4'.format(i, config["path"], SubjectName, link[0]))
+    print('{} {}{}{}{}{}.mp4'.format(i, config["path"], soafd, SubjectName, soafd, link[0]))
     # stáhnout
-    downloadWithProgress(link[1], '{}\\{}\\{}_{}.mp4'.format(config["path"], SubjectName, i, link[0]))
+    downloadWithProgress(link[1], '{}{}{}{}{}_{}.mp4'.format(config["path"], soafd, SubjectName, soafd, i, link[0]))
