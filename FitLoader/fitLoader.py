@@ -92,9 +92,14 @@ SubjectName = SubjectLink.text[:3]
 print(SubjectName)
 
 # KOMENTOVAT JE POTREBA!!!!!
-
 links = browser.get_links(class_='link')
-del links[:3]
+MSTeamsZaznamy = None
+if "Záznamy MS Teams" in links[3].text:
+    MSTeamsZaznamy = links[3]
+    del links[:4]
+else:
+    del links[:3]
+
 # pprint(links)
 # print("\n")    
 
@@ -105,8 +110,8 @@ for link in links:
     i += 1
     browser.follow_link(link)
     matches = re.search(regex, str(browser.parsed), re.MULTILINE )
-
-    # print(matches.group())
+    #print(link)
+    #print(matches)
     fileLinksList.append((sanitizeFileName(matches.group()), browser.get_link(class_="button").attrs['href']))
     # browser.follow_link(SubjectLink)# get back to page with lectures
 
