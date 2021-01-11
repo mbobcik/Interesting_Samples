@@ -32,18 +32,18 @@ session.verify = False
 browser = RoboBrowser(session=session)
 
 def sanitizeFileName(path):
-    path.replace('ø', 'ř')
-    path.replace('¹', 'š')
-    path.replace("\r\n", " ")
-    path.replace(' ', '_')
-    path.replace('.', '')
-    path.replace(',', '')
-    path.replace('¾', 'ž')
-    path.replace('è', 'č')
-    path.replace('ì', 'ě')
-    path.replace('»','ť')
-    path.replace('ù', 'ů')
-    path.replace('Ø','Ř')
+    path = path.replace('ø', 'ř')
+    path = path.replace('¹', 'š')
+    path = path.replace("\r\n", " ")
+    path = path.replace(' ', '_')
+    path = path.replace('.', '')
+    path = path.replace(',', '')
+    path = path.replace('¾', 'ž')
+    path = path.replace('è', 'č')
+    path = path.replace('ì', 'ě')
+    path = path.replace('»','ť')
+    path = path.replace('ù', 'ů')
+    path = path.replace('Ø','Ř')
     return path
 
 def downloadWithProgress(url, path):
