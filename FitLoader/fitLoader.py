@@ -19,7 +19,8 @@ from clint.textui import progress
 import warnings
 warnings.filterwarnings("ignore")
 
-regex = r"(?<=<\/h3>\s).*(?=<br\/?><br\/?>\s)"
+#regex = r"(?<=<\/h3>\s).*(?=<br\/?><br\/?>\s)"
+regex = r"(?<=<\/h3>\s).*\s.*(?=<br\/?><br\/?>\s)"
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 config = json.load(open(os.path.join(__location__,'fitLoader.config.json')))
 systemAwareFolderDelimiter = '\\' if platform.system() == 'Windows' else '/'
@@ -31,7 +32,19 @@ session.verify = False
 browser = RoboBrowser(session=session)
 
 def sanitizeFileName(path):
-    return path.replace('ø', 'ř').replace('¹', 'š').replace("\r\n", " ").replace(' ', '_').replace('.', '').replace(',', '').replace('¾', 'ž').replace('è', 'č').replace('ì', 'ě')
+    path.replace('ø', 'ř')
+    path.replace('¹', 'š')
+    path.replace("\r\n", " ")
+    path.replace(' ', '_')
+    path.replace('.', '')
+    path.replace(',', '')
+    path.replace('¾', 'ž')
+    path.replace('è', 'č')
+    path.replace('ì', 'ě')
+    path.replace('»','ť')
+    path.replace('ù', 'ů')
+    path.replace('Ø','Ř')
+    return path
 
 def downloadWithProgress(url, path):
     r = browser.session.get(url, stream=True, verify=False)
@@ -112,7 +125,7 @@ for link in links:
     matches = re.search(regex, str(browser.parsed), re.MULTILINE )
     #print(link)
     #print(matches)
-    fileLinksList.append((sanitizeFileName(matches.group()), browser.get_link(class_="button").attrs['href']))
+    fileLinksList.append((sanitizeFileName(matches.group()), browser.get_links(class_="button")[1].attrs['href']))
     # browser.follow_link(SubjectLink)# get back to page with lectures
 
 print("Lectures found: {}".format(len(fileLinksList)))
